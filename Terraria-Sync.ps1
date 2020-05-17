@@ -45,7 +45,7 @@ do
      switch ($input)
      {
            '1' {
-               
+               		
 
 					Write-Host "--------------------------------------------------`n " -ForegroundColor Blue
 
@@ -53,8 +53,11 @@ do
 
 					Write-Host "-------------------------------------------------`n " -ForegroundColor Blue
 					Start-Sleep -s 1
-
-					cd "C:\Users\Esteban\Documents\My Games\Terraria\Worlds"
+					#IMPORTANT!!!!!!!!!!!!!!!!!!! CHANGE PATH HERE *********************************************************************
+					cd "C:\Users\YOURUSER\Documents\My Games\Terraria\Worlds"
+					git init
+					#CHANGE YOUR GITHUB REPOSITORY MAP HERE!---------------------------------------------------------------------------------------
+					git remote add origin https://github.com/USER/YOURMAP
 					git pull origin master
 					"`n "
 					Write-Host "-------------------------------------------------`n" -ForegroundColor Blue
@@ -63,6 +66,7 @@ do
 
 					Write-Host "-------------------------------------------------`n  " -ForegroundColor Blue
 
+					#IMPORTANT!!!!!!!!!!!!!!!!!!! CHANGE PATH HERE*********************************************************************
 					Start-Process "C:\Program Files (x86)\Steam\steamapps\common\Terraria\Terraria.exe"
 					Start-Sleep -s 15
 					 
@@ -76,7 +80,9 @@ do
 
 					Write-Host "-------------------------------------------------`n  " -ForegroundColor Blue
 
-					cd "C:\Users\Esteban\Documents\My Games\Terraria\Worlds"
+					#IMPORTANT!!!!!!!!!!!!!!!!!!! CHANGE PATH HERE*********************************************************************
+					
+					cd "C:\Users\YOUR USER\Documents\My Games\Terraria\Worlds"
 					git add .
 					git commit -m "World has been updated"
 					git push origin master
