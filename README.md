@@ -5,6 +5,7 @@ Simple powershell script to sync terraria maps between players, so any one can h
 Instrucctions:
 
 I recommend syncing SinglePlayer Maps to Steam Cloud, you can do this on Terraria Level selection, clicking the cloud, Doing this will prevent SinglePlayer Worlds to be added to the repository.
+https://user-images.githubusercontent.com/55214395/82155680-13c80200-984d-11ea-9cc1-68310dcef93a.png
 
 
 1- You have to create a github repository on C:\Users\YourUser\Documents\My Games\Terraria\Worlds"
