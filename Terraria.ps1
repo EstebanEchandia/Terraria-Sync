@@ -8,8 +8,8 @@ function Show-Menu
 
      Write-Host "================ $Title ================"
     
-     Write-Host "1: Press '1' for this option."
-     Write-Host "2: Press '2' for this option."
+     Write-Host "1: Press '1' for starting the game."
+     Write-Host "2: Press '2' for instructions."
      Write-Host "9: Press '9' to quit."
 }
 
