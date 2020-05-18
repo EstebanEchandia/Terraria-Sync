@@ -3,28 +3,46 @@ function Show-Menu
 {
 	
     param (
-           [string]$Title = 'My Menu'
+           [string]$Title = 'Menu'
      )
 
      Write-Host "================ $Title ================"
     
-     Write-Host "1: Press '1' for starting the game."
+     Write-Host "1: Press '1' to start the game."
      Write-Host "2: Press '2' for instructions."
      Write-Host "9: Press '9' to quit."
 }
 
 function Show-Instructions{
+"
 
-	Write-Host "`n Instrucctions:`n " -ForegroundColor Green
-	Write-Host "I recommend syncing SinglePlayer Maps to Steam Cloud, you can do this on Terraria Level selection, clicking the cloud, `n Doing this will prevent SinglePlayer Worlds to be added to the repository.`n `n " -ForegroundColor Green
-	Write-Host "1- You have to create a github repository on C:\Users\YourUser\Documents\My Games\Terraria\Worlds" -ForegroundColor Green
-	Write-Host "1.1- If one of your friends has alredy created the repository, you should clone it in C:\Users\YourUser\Documents\My Games\Terraria\Worlds`n " -ForegroundColor Green
-	Write-Host "2- Upload your world to this repository`n " -ForegroundColor Green
-	Write-Host "3- Edit this script and change your Terraria.exe location, Default is:'C:\Program Files (x86)\Steam\steamapps\common\Terraria\Terraria.exe'`n " -ForegroundColor Green
-	Write-Host "4- Run this script everytime you open the world you want to be synced with your friends, they should do this too`n " -ForegroundColor Green
+Simple PowerShell script to sync terraria maps between players, so anyone can host/play anytime they want. Please backup your maps before running the script for precaution. You need git bash installed, this is how your maps will be synced.
+
+Instructions:
+
+I recommend adding SinglePlayer Maps to Steam Cloud, you can do this on Terraria Level selection, clicking the cloud, doing this will prevent SinglePlayer Worlds to be added to the repository. In Multiplayer worlds you should see this: ![mp](https://user-images.githubusercontent.com/55214395/82155813-e891e280-984d-11ea-9702-25c25f632271.png)
+And on SinglePlayer this: ![sp](https://user-images.githubusercontent.com/55214395/82155854-20992580-984e-11ea-956e-d16a3edb0240.png)
+
+
+1- You have to create a GitHub repository an add the map you want to play.
+
+2-Edit the script with a text editor, and look for *********** CHANGE PATH HERE ****************, and ******* CHANGE YOUR GITHUB REPOSITORY MAP HERE!**********, replace this with your User, github repository and terraria game path(line 49, 57, 70, 83).
+
+3- Save and Exit, and make sure your git bash is configured with your credentials and all your friends are collaborators to your repository.
+
+4- Run this script every time you open the world you want to be synced with your friends, they should do this too.
+
+5-After closing terraria, wait for the app to upload your map.
+
+6- Have fun playing!
+
+
+"
+
 	
 
 }
+
 
 
 Write-Host "
@@ -45,57 +63,61 @@ do
      switch ($input)
      {
            '1' {
-               		
-
 					Write-Host "--------------------------------------------------`n " -ForegroundColor Blue
-
 					Write-Host "Downloading last version of the map from github`n " -ForegroundColor Green
-
 					Write-Host "-------------------------------------------------`n " -ForegroundColor Blue
 					Start-Sleep -s 1
-					#IMPORTANT!!!!!!!!!!!!!!!!!!! CHANGE PATH HERE *********************************************************************
+
+
+					#****************************** CHANGE PATH HERE ******************************************************************
+					#Replace YOURUSER with your user account from Windows.
+
 					cd "C:\Users\YOURUSER\Documents\My Games\Terraria\Worlds"
 					git init
-					#CHANGE YOUR GITHUB REPOSITORY MAP HERE!---------------------------------------------------------------------------------------
+
+
+
+					#**************************** CHANGE YOUR GITHUB REPOSITORY MAP HERE!*********************************************
+					#replace this link with your github repository
+
 					git remote add origin https://github.com/USER/YOURMAP
+
 					git pull origin master
 					"`n "
 					Write-Host "-------------------------------------------------`n" -ForegroundColor Blue
-
 					Write-Host "Opening Terraria`n " -ForegroundColor Green
-
 					Write-Host "-------------------------------------------------`n  " -ForegroundColor Blue
 
-					#IMPORTANT!!!!!!!!!!!!!!!!!!! CHANGE PATH HERE*********************************************************************
+
+
+					#****************************** CHANGE PATH HERE ******************************************************************
+					#This is default terraria game path, if you have another steam game library, you should replace it too.
 					Start-Process "C:\Program Files (x86)\Steam\steamapps\common\Terraria\Terraria.exe"
+
 					Start-Sleep -s 15
-					 
 					$a = get-process Terraria
 					$a.waitforexit()
-
 					Start-Sleep -s 1
 					Write-Host "-------------------------------------------------`n" -ForegroundColor Blue
-
 					Write-Host "Uploading last version of the map to Github`n " -ForegroundColor Green
-
 					Write-Host "-------------------------------------------------`n  " -ForegroundColor Blue
 
-					#IMPORTANT!!!!!!!!!!!!!!!!!!! CHANGE PATH HERE*********************************************************************
-					
+
+					#****************************** CHANGE PATH HERE ******************************************************************
+					#Replace YOURUSER with your user account from Windows.
+
 					cd "C:\Users\YOUR USER\Documents\My Games\Terraria\Worlds"
+
+
 					git add .
 					git commit -m "World has been updated"
 					git push origin master
 					"`n "
 					Write-Host "-------------------------------------------------`n " -ForegroundColor Blue
-
 					Write-Host "The map was alredy updated, you can close the app`n " -ForegroundColor Green
-
 					Write-Host "-------------------------------------------------`n " -ForegroundColor Blue
-					
 					Start-Sleep -s 10
            } '2' {
-
                 Show-Instructions
 
            } '9' {
